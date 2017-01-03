@@ -92,7 +92,7 @@ WHERE brw.BooksCheckedOut = 0
 Answer: Marlyn & Letme:
 
 
-CardNo	Name				BooksCheckedOut
+CardNo	Name			BooksCheckedOut
 90769	Marlyn Manson		0
 90774	Letme Pumpmyowngas	0
 
@@ -128,9 +128,9 @@ AND bl.DueDate = '02-23-2017'
 
 Answer: See table below:
 
-BookID	Title			DueDate		Name			Address						BranchName
-1		The Lost Tribe	2/23/2017	John Doe		555 W last St. Wobbly, AZ	Sharpstown
-6		The Gene		2/23/2017	Cherry Blossom	9976 N Cold Ln, Fever, AZ	Sharpstown
+BookID	Title		DueDate		Name		Address				BranchName
+1	The Lost Tribe	2/23/2017	John Doe	555 W last St. Wobbly, AZ	Sharpstown
+6	The Gene	2/23/2017	Cherry Blossom	9976 N Cold Ln, Fever, AZ	Sharpstown
 
 */
 
@@ -169,10 +169,10 @@ GROUP BY lib.BranchName, lib.BranchID
 
 /*
 BranchName		BranchID	Number of Books On Loan
-Sharpstown		1			13
-Central			2			12
-Firetown		3			14
-Cactus Head		4			10
+Sharpstown		1		13
+Central			2		12
+Firetown		3		14
+Cactus Head		4		10
 
 */
 
@@ -248,11 +248,11 @@ ORDER BY brw.CardNo
 
 Answer: John, Bugs, Charles, Sam.
 
-CardNo	Name			Address									BooksCheckedOut	BookID
-89912	John Doe		555 W last St. Wobbly, AZ				7				1
-89914	Bugs Bunny		555 W last St, Wobbly, AZ				6				2
-89916	Charles Manson	6666 W Crazymean Breezway, Folsem, CA	7				3
-89918	Sam Iam			8 S OohOoh. WelcomebackCotter, NY		6				5
+CardNo	Name		Address					BooksCheckedOut	BookID
+89912	John Doe	555 W last St. Wobbly, AZ		7		1
+89914	Bugs Bunny	555 W last St, Wobbly, AZ		6		2
+89916	Charles Manson	6666 W Crazymean Breezway, Folsem, CA	7		3
+89918	Sam Iam		8 S OohOoh. WelcomebackCotter, NY	6		5
 
 */
 
@@ -279,8 +279,8 @@ WHERE ba.AuthorName = 'Stephen King' AND lib.BranchID = 2
 
 Answer: The number of copies is 4
 
-BookID	Title				AuthorName		No_Of_Copies	BranchName	BranchID
-2		The Tommyknockers	Stephen King	4				Central		2
+BookID	Title			AuthorName	No_Of_Copies	BranchName	BranchID
+2	The Tommyknockers	Stephen King	4		Central		2
 
 
 */
