@@ -136,21 +136,21 @@ BookID	Title			DueDate		Name			Address						BranchName
 /*
 
 5. For each library branch, retrieve the branch name and the total number of 
-books loaned out from that branch.***NOTE****This Query Drill also answers the final query assignment to: "create a stored procedure that will execute one or more of those queries, based on user
-choice."BranchID's:
+books loaned out from that branch.***NOTE****This Query Drill also answers the final query assignment to: "create a stored 
+procedure that will execute one or more of those queries, based on user choice."BranchID's:
 Sharpstown = 1
 Central = 2
 Firetown = 3
-Cactus Head = 4Also note: This was definitely the hardest query for me to figure out since the assignment wanted to list the "number of books loaned out." I researched and learned about the "COUNT" function. I had fun getting it to work. I also learned how to create a column in the query results.*/--**********************************************************************************************************************-- I am using the COUNT function which I learned about on my own. SELECT lib.BranchName, lib.BranchID, COUNT(BookID) AS [Number of Books On Loan] 
+Cactus Head = 4Also note: This was definitely the hardest query for me to figure out since the assignment wanted to list the "number of books loaned out." I researched and learned about the "COUNT" function. I had fun getting it to work. I also learned how to create a column in the query results.*/-- ===============================================================================================SELECT lib.BranchName, lib.BranchID, COUNT(BookID) AS [Number of Books On Loan] 
 FROM BOOK_LOANS AS bl
 FULL OUTER JOIN LIBRARY_BRANCH AS lib
 ON bl.BranchID = lib.BranchID
-GROUP BY lib.BranchName, lib.BranchID/*BranchName		BranchID	Number of Books On Loan
+GROUP BY lib.BranchName, lib.BranchID/*BranchName		BranchID	Number of Books On Loan
 Sharpstown		1			13
 Central			2			12
 Firetown		3			14
 Cactus Head		4			10
-*/--STORED PROCEDURE:CREATE PROCEDURE bookloans @BranchID VARCHAR(50)
+*/-- =============================================================================================================== ----STORED PROCEDURE:CREATE PROCEDURE bookloans @BranchID VARCHAR(50)
 
 AS
 
@@ -173,7 +173,8 @@ IF @BranchID = 4
 BEGIN
 SELECT COUNT(BookID) AS [Cactus Head Branch Number of Books On Loan] FROM BOOK_LOANS WHERE BranchID = @BranchID;
 END
---**********************************************************************************************************************
+
+-- ================================================================================================================= --
 
 exec bookloans '1'
 exec bookloans '2'
