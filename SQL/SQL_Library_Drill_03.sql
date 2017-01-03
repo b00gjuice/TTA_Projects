@@ -139,21 +139,48 @@ BookID	Title			DueDate		Name			Address						BranchName
 /*
 
 5. For each library branch, retrieve the branch name and the total number of 
-books loaned out from that branch.***NOTE****This Query Drill also answers the final query assignment to: "create a stored 
-procedure that will execute one or more of those queries, based on user choice."BranchID's:
+books loaned out from that branch.
+
+***NOTE****
+
+This Query Drill also answers the final query assignment to: "create a stored 
+procedure that will execute one or more of those queries, based on user choice."
+
+BranchID's:
 Sharpstown = 1
 Central = 2
 Firetown = 3
-Cactus Head = 4*/SELECT lib.BranchName, lib.BranchID, COUNT(BookID) AS [Number of Books On Loan] 
+Cactus Head = 4
+
+
+*/
+
+
+
+
+
+SELECT lib.BranchName, lib.BranchID, COUNT(BookID) AS [Number of Books On Loan] 
 FROM BOOK_LOANS AS bl
 FULL OUTER JOIN LIBRARY_BRANCH AS lib
 ON bl.BranchID = lib.BranchID
-GROUP BY lib.BranchName, lib.BranchID/*BranchName		BranchID	Number of Books On Loan
+GROUP BY lib.BranchName, lib.BranchID
+
+
+
+/*
+BranchName		BranchID	Number of Books On Loan
 Sharpstown		1			13
 Central			2			12
 Firetown		3			14
 Cactus Head		4			10
-*/--STORED PROCEDURE:CREATE PROCEDURE bookloans @BranchID VARCHAR(50)
+
+*/
+
+
+
+--STORED PROCEDURE:
+
+CREATE PROCEDURE bookloans @BranchID VARCHAR(50)
 
 AS
 
@@ -200,21 +227,45 @@ Cactus Head Branch Number of Books On Loan
 10	
 */
 
-/*6. Retrieve the names, addresses, and number of books checked out for all borrowers who have more
-than five books checked out.*/SELECT brw.CardNo, brw.Name, brw.[Address], brw.BooksCheckedOut, bl.BookID
+
+
+/*
+6. Retrieve the names, addresses, and number of books checked out for all borrowers who have more
+than five books checked out.
+
+*/
+
+
+SELECT brw.CardNo, brw.Name, brw.[Address], brw.BooksCheckedOut, bl.BookID
 FROM BORROWER as brw
 INNER JOIN BOOK_LOANS as bl
 ON brw.CardNo = bl.CardNo
 WHERE brw.BooksCheckedOut >= 5
 ORDER BY brw.CardNo
-/*Answer: John, Bugs, Charles, Sam.
+
+
+/*
+
+Answer: John, Bugs, Charles, Sam.
+
 CardNo	Name			Address									BooksCheckedOut	BookID
 89912	John Doe		555 W last St. Wobbly, AZ				7				1
 89914	Bugs Bunny		555 W last St, Wobbly, AZ				6				2
 89916	Charles Manson	6666 W Crazymean Breezway, Folsem, CA	7				3
 89918	Sam Iam			8 S OohOoh. WelcomebackCotter, NY		6				5
-*//*7. For each book authored (or co-authored) by "Stephen King", retrieve the title and the number of
-copies owned by the library branch whose name is "Central"*/SELECT bk.BookID, bk.Title, ba.AuthorName, bc.No_Of_Copies, lib.BranchName, lib.BranchID
+
+*/
+
+
+/*
+
+7. For each book authored (or co-authored) by "Stephen King", retrieve the title and the number of
+copies owned by the library branch whose name is "Central"
+
+*/
+
+
+SELECT bk.BookID, bk.Title, ba.AuthorName, bc.No_Of_Copies, lib.BranchName, lib.BranchID
 FROM BOOK as bk
 INNER JOIN BOOK_AUTHORS as ba
 ON bk.BookID = ba.BookID
