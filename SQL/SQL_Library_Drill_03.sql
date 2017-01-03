@@ -11,7 +11,7 @@ These are all the queries required by the SQL Drill Assignment
 
 */
 
---============================================================================--
+
 
 
 USE FC_Library
@@ -20,7 +20,7 @@ GO
 /*
 
 1. How many copies of the book titled The Lost Tribe are owned by the 
-library branch whose name is "Sharpstown"?--
+library branch whose name is "Sharpstown"?
 
 */
 
@@ -45,7 +45,7 @@ BookID	  No_Of_Copies	  BranchID	BranchName
 */
 
 
---============================================================================--
+
 
 /*
 --2. How many copies of the book titled The Lost Tribe are 
@@ -60,6 +60,7 @@ ON BC.BranchID = lib.BranchID JOIN book AS bk
 ON BC.BookID = bk.BookID
 WHERE bk.Title = 'The Lost Tribe'
 
+
 /*
 
 Answer: Sharpstown: 3, Central: 2, Firetown: 2, Cactus Head: 3,:
@@ -72,7 +73,6 @@ The Lost Tribe	1		Cactus Head		3
 */
 
 
---============================================================================--
 
 /*
 
@@ -86,6 +86,7 @@ INNER JOIN BOOK_LOANS AS bl
 ON brw.CardNo = bl.CardNo
 WHERE brw.BooksCheckedOut = 0
 
+
 /*
 
 Answer: Marlyn & Letme:
@@ -98,15 +99,17 @@ CardNo	Name				BooksCheckedOut
 */
 
 
---============================================================================--
+
 
 
 /*
+
 4. For each book that is loaned out from the "Sharpstown" branch and whose 
 DueDate is today, retrieve the book title, the borrower's name, and the 
 borrower's address. 
 
 Note: Assuming "Today" is 02-23-2017
+
 */
 
 
@@ -131,7 +134,7 @@ BookID	Title			DueDate		Name			Address						BranchName
 
 */
 
---============================================================================--
+
 
 /*
 
@@ -141,7 +144,7 @@ procedure that will execute one or more of those queries, based on user choice."
 Sharpstown = 1
 Central = 2
 Firetown = 3
-Cactus Head = 4Also note: This was definitely the hardest query for me to figure out since the assignment wanted to list the "number of books loaned out." I researched and learned about the "COUNT" function. I had fun getting it to work. I also learned how to create a column in the query results.*/-- ===============================================================================================SELECT lib.BranchName, lib.BranchID, COUNT(BookID) AS [Number of Books On Loan] 
+Cactus Head = 4*/SELECT lib.BranchName, lib.BranchID, COUNT(BookID) AS [Number of Books On Loan] 
 FROM BOOK_LOANS AS bl
 FULL OUTER JOIN LIBRARY_BRANCH AS lib
 ON bl.BranchID = lib.BranchID
@@ -150,7 +153,7 @@ Sharpstown		1			13
 Central			2			12
 Firetown		3			14
 Cactus Head		4			10
-*/-- =============================================================================================================== ----STORED PROCEDURE:CREATE PROCEDURE bookloans @BranchID VARCHAR(50)
+*/--STORED PROCEDURE:CREATE PROCEDURE bookloans @BranchID VARCHAR(50)
 
 AS
 
@@ -174,7 +177,9 @@ BEGIN
 SELECT COUNT(BookID) AS [Cactus Head Branch Number of Books On Loan] FROM BOOK_LOANS WHERE BranchID = @BranchID;
 END
 
--- ================================================================================================================= --
+/*
+Execute the following:
+*/
 
 exec bookloans '1'
 exec bookloans '2'
@@ -195,7 +200,6 @@ Cactus Head Branch Number of Books On Loan
 10	
 */
 
---============================================================================--
 /*6. Retrieve the names, addresses, and number of books checked out for all borrowers who have more
 than five books checked out.*/SELECT brw.CardNo, brw.Name, brw.[Address], brw.BooksCheckedOut, bl.BookID
 FROM BORROWER as brw
@@ -209,7 +213,7 @@ CardNo	Name			Address									BooksCheckedOut	BookID
 89914	Bugs Bunny		555 W last St, Wobbly, AZ				6				2
 89916	Charles Manson	6666 W Crazymean Breezway, Folsem, CA	7				3
 89918	Sam Iam			8 S OohOoh. WelcomebackCotter, NY		6				5
-*/--============================================================================--/*7. For each book authored (or co-authored) by "Stephen King", retrieve the title and the number of
+*//*7. For each book authored (or co-authored) by "Stephen King", retrieve the title and the number of
 copies owned by the library branch whose name is "Central"*/SELECT bk.BookID, bk.Title, ba.AuthorName, bc.No_Of_Copies, lib.BranchName, lib.BranchID
 FROM BOOK as bk
 INNER JOIN BOOK_AUTHORS as ba
@@ -230,4 +234,3 @@ BookID	Title				AuthorName		No_Of_Copies	BranchName	BranchID
 
 */
 
---====================================================================================--
