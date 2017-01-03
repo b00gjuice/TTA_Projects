@@ -11,3 +11,4 @@ Explanations of files:
 
 More:
 - The "stored procedure" is part of #5 in "SQL_Library_Drill_03.sql"
+- I used Microsoft SQLEXPRESS 2016
