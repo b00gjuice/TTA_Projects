@@ -1,0 +1,204 @@
+
+<!DOCTYPE HTML>
+<!-- Hi, this is Freeman Cooley's Pizza Website Project -->
+
+<html lang="en">
+<head>
+<title>Freeman's Pizza Site</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Freeman Cooley's Pizza Project Website.">
+	<meta name="author" content="Freeman Marvin Cooley">
+
+
+	<!-- Assets -->
+	<link href="assets/css/bootstrap.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="assets/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="assets/css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!-- <link rel="stylesheet" href="assets/css/ttahint.css"> -->
+
+
+</head>
+
+<body id="top" data-spy="scroll" data-target="#main-nav">
+	<!-- WRAPPER -->
+	<div class="wrapper">
+
+
+<nav class="navigation-bar navbar-default is-visible" data-nav-status="toggle" id="main-nav" role="navigation">
+
+			<div class="container">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-nav-collapse">
+						<span class="sr-only">Toggle Navigation</span>
+						<i class="fa fa-bars"></i>
+					</button>
+				</div>
+
+				<!-- navigation links -->
+				<div class="collapse navbar-collapse main-nav-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#top">HOME</a></li>
+						<li><a href="#pizza1">Menu</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END MAIN NAVIGATION -->
+
+			<header class="hero-unit header" id="header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 left">
+							<div class="avatar">
+								<div id="myCarousel" class="carousel slide" data-ride="carousel">
+									<ol class="carousel-indicators">
+										<li data-target="#myCarousel" data-slide-to="0"></li>
+										<li data-target="#myCarousel" data-slide-to="1"></li>
+										<li data-target="#myCarousel" data-slide-to="2"></li>
+										<li data-target="#myCarousel" data-slide-to="3"></li>
+									</ol>
+						<div class="carousel-inner">
+						<div class="item active">
+							<img src="assets/img/pizza_01.jpg" class="img-responsive" alt="Profile Picture"
+							 />
+						 </div>
+						 <div class="item">
+							 <img src="assets/img/pizza_02.jpg" class="img-responsive" alt="Profile Picture"
+							 />
+						 </div>
+						 <div class="item">
+							 <img src="assets/img/pizza_03.jpg" class="img-responsive" alt="Profile Picture"
+							 />
+						 </div>
+						 <div class="item">
+							 <img src="assets/img/pizza_07.jpg" class="img-responsive" alt="Profile Picture"
+							 />
+						 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-6 right">
+		<!-- <h1 class="hide">Freeman Cooley</h1> -->
+		<h2 class="heading">HELLO, Welcome to Freeman's Easy Order Pizza!</h2>
+		<p>Are you hungry for some Pizza?</p>
+				<a href="#pizza1" class="btn btn3d btn-danger btn-lg">Menu</a>
+				<!-- <a href="#pizza2" class="btn btn3d btn-primary btn-lg">Pizza2</a>
+				<a href="#pizza3" class="btn btn3d btn-primary btn-lg">Pizza3</a> -->
+	</div>
+
+</div>
+</div>
+
+</header>
+<!-- END HEADER -->
+
+<!-- pizza1 -->
+<section class="section pizza1" id="pizza1">
+
+
+
+	<div class="container">
+		<div id="menuFC"><h1>Build Your Pizza</h1>
+			<form id="orderMenu">
+				<div class="menu">
+					<h3>Size:</h3>
+					<input class="size" type="radio" name="Size" value="Personal Pizza"> Personal Pizza<br>
+					<input class="size" type="radio" name="Size" value="Medium Pizza"> Medium Pizza<br>
+					<input class="size" type="radio" name="Size" value="Large Pizza" checked> Large Pizza<br>
+					<input class="size" type="radio" name="Size" value="Extra Large Pizza"> Extra Large Pizza<br>
+				</div>
+				<div class="menu">
+					<h3>Meats:</h3>
+					<input class="meats" type="checkbox" name="Meat" value="Pepperoni"> Pepperoni<br>
+					<input class="meats" type="checkbox" name="Meat" value="Sausage"> Sausage <br>
+					<input class="meats" type="checkbox" name="Meat" value="Canadian Bacon"> Canadian Bacon<br>
+					<input class="meats" type="checkbox" name="Meat" value="Ground Beef"> Ground Beef<br>
+					<input class="meats" type="checkbox" name="Meat" value="Anchovy"> Anchovy<br>
+					<input class="meats" type="checkbox" name="Meat" value="Chicken"> Chicken<br>
+				</div>
+				<div class="menu">
+					<h3>Veggies:</h3>
+					<input class="veggies" type="checkbox" name="Veggie" value="Tomatoes"> Tomatoes<br>
+					<input class="veggies" type="checkbox" name="Veggie" value="Onions"> Onions <br>
+					<input class="veggies" type="checkbox" name="Veggie" value="Olives"> Olives<br>
+					<input class="veggies" type="checkbox" name="Veggie" value="Green Peppers"> Green Peppers<br>
+					<input class="veggies" type="checkbox" name="Veggie" value="Mushrooms"> Mushrooms<br>
+					<input class="veggies" type="checkbox" name="Veggie" value="Pineapple"> Pineapple<br>
+					<input class="veggies" type="checkbox" name="Veggie" value="Spinach"> Spinach<br>
+					<input class="veggies" type="checkbox" name="Veggie" value="Jalapeno"> Jalapeno<br>
+				</div>
+				<div class="menu">
+					<h3>Cheese:</h3>
+					<input class="cheese" type="radio" name="Cheese" value="Regular cheese" checked> Regular cheese<br>
+					<input class="cheese" type="radio" name="Cheese" value="No cheese"> No cheese<br>
+					<input class="cheese" type="radio" name="Cheese" value="Extra cheese"> Extra cheese<br>
+				</div>
+				<div class="menu">
+					<h3>Sauce:</h3>
+					<input class="sauce" type="radio" name="Sauce" value="Marinara sauce" checked> Marinara sauce<br>
+					<input class="sauce" type="radio" name="Sauce" value="White sauce"> White sauce<br>
+					<input class="sauce" type="radio" name="Sauce" value="Barbeque sauce"> Barbeque sauce<br>
+					<input class="sauce" type="radio" name="Sauce" value="No sauce"> No sauce<br>
+				</div>
+				<div class="menu">
+					<h3>Crust:</h3>
+					<input class="crust" type="radio" name="Crust" value="Plain Crust" checked> Plain Crust<br>
+					<input class="crust" type="radio" name="Crust" value="Garlic Butter Crust"> Garlic Butter Crust<br>
+					<input class="crust" type="radio" name="Crust" value="Cheese Stuffed Crust"> Cheese Stuffed Crust<br>
+					<input class="crust" type="radio" name="Crust" value="Spicy Crust"> Spicy Crust<br>
+					<input class="crust" type="radio" name="Crust" value="House Special Crust"> House Special Crust<br>
+				</div>
+
+			</form><br>
+			<div class="controls">
+				<div class="btn btn3d btn-primary btn-lg" onclick="getReceipt()">
+					<p>Place Order</p>
+				</div>
+				<div class="btn btn3d btn-primary btn-lg" onclick="clearAll()">
+					<p>Cancel</p>
+				</div>
+			</div>
+			<div id="cart">
+				<div id="title1"><h3>You Ordered:</h3></div>
+				<div id="title2"><h3>Subtotal:</h3></div>
+				<div id="showText1"></div>
+				<div id="showText2"></div>
+				<div id="totalPrice1"><h3>Total Price:</h3></div>
+				<div id="totalPrice2"></div>
+			</div>
+		</div>
+		</div>
+
+
+	</div>
+
+</section>
+
+<!-- end pizza1 -->
+
+
+
+		<!-- FOOTER -->
+		<footer class="footer">
+			<p>Copyright 2016 Freeman Cooley. All Rights Reserved.</p>
+		</footer>
+		<!-- END FOOTER -->
+
+	</div>
+
+	<!-- JAVASCRIPT -->
+	<script src="assets/js/jquery-2.1.1.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/plugins/scrolling/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<script src="assets/js/plugins/scrolling/jquery.localscroll-1.2.7-min.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/Pizza.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>
