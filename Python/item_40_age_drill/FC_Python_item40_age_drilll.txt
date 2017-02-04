@@ -1,0 +1,8 @@
+This is my code for the The Tech Academy Python Course item 40 drill
+
+# Python v3.6.0:41df79263# Python v3.6.0:41df79263a11, Dec 23 2016
+# Student: Freeman Cooley
+# Python Course Item 40
+# Calculate Age Drill
+# Credit: http://www.wikihow.com/Create-a-Very-Simple-Program-in-Python
+# Modified by Freeman Cooley
