@@ -1,0 +1,6 @@
+# Python v3.6.0:41df79263# Python v3.6.0:41df79263a11, Dec 23 2016
+# Student: Freeman Cooley
+# Python Course Item 46
+# DRILL: Python range function
+# Study Page: http://pythoncentral.io/pythons-range-function-explained/
+
