@@ -2,6 +2,11 @@
 # Student: Freeman Cooley
 # Python Course Item 48
 # DRILL: Python Sort Drill
+# Study Pages:
+# https://wiki.python.org/moin/HowTo/Sorting
+# http://www.compciv.org/guides/python/fundamentals/sorting-collections-with-sorted/
+# https://docs.python.org/3/howto/sorting.html
+# http://stackoverflow.com/questions/11964450/python-order-a-list-of-numbers-without-built-in-sort-min-max-function
 
 # Sort Drill Part 1
 
