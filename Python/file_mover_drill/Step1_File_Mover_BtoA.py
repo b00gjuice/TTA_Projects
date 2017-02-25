@@ -2,12 +2,10 @@
 # Python 2.7.13 (v2.7.13:a06454b1afa1, Dec 17 2016, 20:42:59)
 # Student: Freeman Cooley
 # Python Course Item 63
-# Drill: File Mover
+# Drill: File Mover, Step 1
 # https://docs.python.org/2/library/shutil.html
-
-# Move text files from Folder_A to Folder_B
-
-
+# Step 1
+# Move text files from Folder_B to Folder_A
 
 import shutil
 import os
@@ -24,18 +22,18 @@ time.sleep(0.2)
 print "Files in Folder_B", os.listdir(B)
 time.sleep(0.3)
 
-def moveFiles(A, B):
-    folder = os.listdir(A)
+def moveFiles(B, A):
+    folder = os.listdir(B)
     for files in folder:
         if files.endswith('.txt'):
-            shutil.move(A+files, B)
-            print os.path.abspath(B+files)
+            shutil.move(B+files, A)
+            print os.path.abspath(A+files)
 
-moveFiles(A, B)
+moveFiles(B, A)
 
 time.sleep(0.2)
 print "Files in Folder_A", os.listdir(A)
 time.sleep(0.2)
 print "Files in Folder_B", os.listdir(B)
 time.sleep(0.3)
-print "Text files moved from Folder_A to Folder_B"
+print "Text files moved from Folder_B to Folder_A"

@@ -2,6 +2,11 @@ The Tech Academy
 Python 2.7 File Mover Drill
 Python Course item 63
 
+STEP1:
+
+Since the other drills involve updates to the File Mover Schema, I've changed 
+the files to reflect the step.
+
 Python Drill: PyDrill_shutil_module_27_idle
 Title: File Mover — Python 2.7— IDLE
 Scenario: 
