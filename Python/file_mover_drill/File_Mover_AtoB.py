@@ -24,7 +24,7 @@ time.sleep(0.2)
 print "Files in Folder_B", os.listdir(B)
 time.sleep(0.3)
 
-def moveFiles(source, dest):
+def moveFiles(A, B):
     folder = os.listdir(A)
     for files in folder:
         if files.endswith('.txt'):
