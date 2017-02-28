@@ -1,5 +1,5 @@
 The Tech Academy
-Python 2.7 File Mover Drill
+Python 3.6 File Mover Drill
 Python Course item 65
 
 File Mover Drills Part 3
