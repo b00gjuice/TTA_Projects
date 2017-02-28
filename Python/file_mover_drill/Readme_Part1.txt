@@ -2,7 +2,7 @@ The Tech Academy
 Python 2.7 File Mover Drill
 Python Course item 63
 
-STEP1:
+Part 1:
 
 Since the other drills involve updates to the File Mover Schema, I've changed 
 the files to reflect the step.

@@ -2,7 +2,7 @@ The Tech Academy
 Python 2.7 File Mover Drill
 Python Course item 64
 
-File Mover Drills Step 2
+File Mover Drills Part 2
 
 Quick Summary: Files older than 24 hours are not moved. Files modified less than 24 hours are moved.
 
