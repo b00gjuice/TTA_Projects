@@ -14,8 +14,9 @@
 #       Section 8 GUI training
 # Drill: File Mover part 4
 #
-# This program moves files based on a time check taken from a database
+# File Mover Progrom with GUI and database
 # A message box is displayed confirming file moved and destination location
+# The time of the last file transfer is shown in GUI
 
 # Importing necessary modules
 import tkinter
@@ -36,9 +37,6 @@ with sqlite3.connect('file_mover.db') as connection:
     c = connection.cursor()
 
     c.execute("CREATE TABLE IF NOT EXISTS Date_Time(check_time DATE)")
-    realTime = datetime.datetime.now()
-    c.execute("INSERT INTO Date_Time VALUES(?)",(realTime,))
-    connection.commit()
 
 
 class File_Mover:
@@ -53,29 +51,43 @@ class File_Mover:
         dest = filedialog.askdirectory()
         self.dest_var.set(dest+'/')
 
-    def create_new_window(self):
-        window = tk.Toplevel(root)
-
-    # Moving Files. This is from drill part 2
+    # Moving Files. This is modified from drill part 2
     # Opening a messagebox to show file moved and location
+    # Recording the time of the last file transfer
     def moveFiles(self, source, dest):
         folder = os.listdir(source)
         for files in folder:
             old_timey = os.path.getmtime(source+files)
-            time_check = time.time() - 86400
-            if old_timey >= time_check:
+            check = time.time() - 86400
+            if old_timey >= check:
                 shutil.move(source+files, dest)
                 # Confirmation to user. Using messagebox
                 messagebox.showinfo(title = 'File Mover', message = (files + " ...Moved to location: " + os.path.abspath(dest+files)))
+                realTime = datetime.datetime.now()
+                c.execute("INSERT INTO Date_Time VALUES(?)",(realTime,))
+                connection.commit()
+
+                # Note:
+                # This assignment requires I show the time of the last file transfer in the GUI
+                # I could have shown the time of the last file transfer very easily with the following line:
+                # "self.file_check.set(datetime.datetime.now())" added in place of "set.file.check.set" below
+                # However, it would not have met the requirement to retrieve the time from a database
+                # Therefore, I had to create a new definition "File_Time" and passed that in as seen below.
 
 
-    def DB_Return(self):
-        connection = sqlite3.connect('file_mover.db')
-        c = connection.cursor()
-        Time_Check = c.execute("SELECT check_time FROM Date_Time WHERE ROWID = (SELECT MAX(ROWID) FROM Date_Time)")
-        for row in c.fetchone():
-            return (row)
-        connection.close()
+                def File_Time():
+                    connection = sqlite3.connect('file_mover.db')
+                    c = connection.cursor()
+                    Time_Check = c.execute("SELECT check_time FROM Date_Time WHERE ROWID = (SELECT MAX(ROWID) FROM Date_Time)")
+                    for row in c.fetchone():
+                        return (row)
+                    connection.close()
+                ttk.Label(self.frame_content, text="Last File Check Date/Time:").grid(row=4, column=0, padx=10, pady=40, sticky = W)
+                self.file_check = StringVar()
+                self.file_check.set(File_Time())
+                self.end_dest = ttk.Entry(self.frame_content, width=80, textvariable=self.file_check)
+                self.end_dest.grid(row=4, column=2, padx=10, pady=3, sticky = W)
+
 
     def DB_Check(self):
         self.moveFiles(self.src_var.get(),self.dst_var.get())
@@ -107,29 +119,30 @@ class File_Mover:
 
         # Buttons for choosing folders and moving files
         ttk.Button(self.frame_content, text='Choose Source Folder',
-        command= lambda: self.choose_Source()).grid(row=0, column=0, padx=10, pady=10, sticky = W)
+        command= lambda: self.choose_Source()).grid(row=1, column=0, padx=10, pady=10, sticky = W)
         ttk.Button(self.frame_content, text='Choose Destination Folder',
-        command= lambda: self.choose_Dest()).grid(row=2, column=0, padx=10, pady=10, sticky = W)
+        command= lambda: self.choose_Dest()).grid(row=3, column=0, padx=10, pady=10, sticky = W)
         ttk.Button(self.frame_content, text='Move the Files',
-        command= lambda: self.moveFiles(self.source_var.get(),self.dest_var.get())).grid(row=5, column=0, padx=10, pady=20, sticky = W)
+        command= lambda: self.moveFiles(self.source_var.get(),self.dest_var.get())).grid(row=6, column=0, padx=10, pady=20, sticky = W)
 
         # Entry line for Source Folder
-        ttk.Label(self.frame_content, text="Source Folder:").grid(row=1, column=0, padx=10, pady=5, sticky = W)
+        ttk.Label(self.frame_content, text="Source Folder:").grid(row=2, column=0, padx=10, pady=5, sticky = W)
         self.source_var = StringVar()
         self.start_source = ttk.Entry(self.frame_content, width=80, textvariable=self.source_var)
-        self.start_source.grid(row=1, column=2, padx=10, pady=3)
+        self.start_source.grid(row=2, column=2, padx=10, pady=3)
 
         # Entry line for Destination Folder
-        ttk.Label(self.frame_content, text="Destination Folder:").grid(row=3, column=0, padx=10, pady=3, sticky = W)
+        ttk.Label(self.frame_content, text="Destination Folder:").grid(row=4, column=0, padx=10, pady=3, sticky = W)
         self.dest_var = StringVar()
         self.end_dest = ttk.Entry(self.frame_content, width=80, textvariable=self.dest_var)
-        self.end_dest.grid(row=3, column=2, padx=10, pady=3)
+        self.end_dest.grid(row=4, column=2, padx=10, pady=3)
 
-        ttk.Label(self.frame_content, text="Last File Check Time:").grid(row=4, column=0, padx=10, pady=40, sticky = W)
-        self.file_check = StringVar()
-        self.file_check.set(self.DB_Return())
-        self.end_dest = ttk.Entry(self.frame_content, width=80, textvariable=self.file_check)
-        self.end_dest.grid(row=4, column=2, padx=10, pady=3, sticky = W)
+        # Showing Startup Time in GUI just for fun
+        ttk.Label(self.frame_content, text="Startup Date/Time:").grid(row=0, column=0, padx=10, pady=40, sticky = W)
+        self.start_check = StringVar()
+        self.start_check.set(datetime.datetime.now())
+        self.end_dest = ttk.Entry(self.frame_content, width=80, textvariable=self.start_check)
+        self.end_dest.grid(row=0, column=2, padx=10, pady=3, sticky = W)
 
 
 def main():
