@@ -30,6 +30,7 @@ import time
 import shutil
 import datetime
 import sqlite3
+import glob
 
 # Creating a database for file time check
 with sqlite3.connect('file_mover.db') as connection:
@@ -69,10 +70,7 @@ class File_Mover:
 
                 # Note:
                 # This assignment requires I show the time of the last file transfer in the GUI
-                # I could have shown the time of the last file transfer very easily with the following line:
-                # "self.file_check.set(datetime.datetime.now())" added in place of "set.file.check.set" below
-                # However, it would not have met the requirement to retrieve the time from a database
-                # Therefore, I had to create a new definition "File_Time" and passed that in as seen below.
+                # I had to create a new definition "File_Time" and passed that in as seen below.
 
 
                 def File_Time():
@@ -82,7 +80,7 @@ class File_Mover:
                     for row in c.fetchone():
                         return (row)
                     connection.close()
-                ttk.Label(self.frame_content, text="Last File Check Date/Time:").grid(row=4, column=0, padx=10, pady=40, sticky = W)
+                ttk.Label(self.frame_content, text="Files Moved. Updated Date/Time:").grid(row=4, column=0, padx=10, pady=40, sticky = W)
                 self.file_check = StringVar()
                 self.file_check.set(File_Time())
                 self.end_dest = ttk.Entry(self.frame_content, width=80, textvariable=self.file_check)
@@ -137,10 +135,19 @@ class File_Mover:
         self.end_dest = ttk.Entry(self.frame_content, width=80, textvariable=self.dest_var)
         self.end_dest.grid(row=4, column=2, padx=10, pady=3)
 
-        # Showing Startup Time in GUI just for fun
-        ttk.Label(self.frame_content, text="Startup Date/Time:").grid(row=0, column=0, padx=10, pady=40, sticky = W)
+        # Showing last time files where moved
+        ttk.Label(self.frame_content, text="Last File Check Date/Time:").grid(row=0, column=0, padx=10, pady=40, sticky = W)
         self.start_check = StringVar()
-        self.start_check.set(datetime.datetime.now())
+        # The GUI needs to show the last time the files where moved
+        # This passes in a function from the database that was written to when the files where moved last.
+        def File_Time_Saved():
+            connection = sqlite3.connect('file_mover.db')
+            c = connection.cursor()
+            Time_Check = c.execute("SELECT check_time FROM Date_Time WHERE ROWID = (SELECT MAX(ROWID) FROM Date_Time)")
+            for row in c.fetchone():
+                return (row)
+            connection.close()
+        self.start_check.set(File_Time_Saved())
         self.end_dest = ttk.Entry(self.frame_content, width=80, textvariable=self.start_check)
         self.end_dest.grid(row=0, column=2, padx=10, pady=3, sticky = W)
 
