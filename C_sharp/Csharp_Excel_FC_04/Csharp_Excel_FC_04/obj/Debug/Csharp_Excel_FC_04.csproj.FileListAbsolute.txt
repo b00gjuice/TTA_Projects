@@ -1,0 +1,9 @@
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\bin\Debug\Csharp_Excel_FC_04.exe.config
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\bin\Debug\Csharp_Excel_FC_04.exe
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\bin\Debug\Csharp_Excel_FC_04.pdb
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\obj\Debug\Csharp_Excel_FC_04.csproj.ResolveComReference.cache
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\obj\Debug\Csharp_Excel_FC_04.Properties.Resources.resources
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\obj\Debug\Csharp_Excel_FC_04.csproj.GenerateResource.Cache
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\obj\Debug\Csharp_Excel_FC_04.exe
+c:\users\fcool\documents\visual studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\obj\Debug\Csharp_Excel_FC_04.pdb
+C:\Users\fcool\Documents\Visual Studio 2017\Projects\Csharp_Excel_FC_04\Csharp_Excel_FC_04\obj\Debug\Csharp_Excel_FC_04.Form1.resources
