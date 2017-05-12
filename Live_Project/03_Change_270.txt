@@ -1,0 +1,12 @@
+Changeset 270
+User Story 139
+
+
+Add a pipe "|" between JobPDX and Admin with space on each side to look nice.
+
+
+
+_LoginPartial.cshtml
+
+<!-- Added "Pipe (|) between JobPDX & Admin for aestetics. ActionLink is disabled if clicked" -->
+<li>@Html.ActionLink("|", "", "", new { onclick = "javascript:return false;" })</li> 

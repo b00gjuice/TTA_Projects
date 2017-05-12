@@ -1,0 +1,155 @@
+Changeset 283
+User Story 197
+
+Make Home/Index the landing page and have it re-direct to the jobs/index if logged in.
+
+
+- I was assinged the task of adding a new view for a landing page.
+
+
+RouteConfig.cs:
+
+defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+
+
+HomeController.cs:
+
+I had to develop/add code to make the live database queries work.
+
+
+ // GET: Job Count & Company Count for Non-Authenticated & Non-Admin Users
+
+        public async Task<ActionResult> Index(string jobTitleString, string companyString, int selectedLocationId = 0, int JobID = 0)
+        {
+            // Include LINQ queries to allow filters
+            var jobs = from j in context.Jobs
+                       select j;
+
+            // Var for counting number of companies used below in company count
+            var companies = from c in context.Companies
+                            select c;
+
+
+            // Job title search form field
+            if (!String.IsNullOrEmpty(jobTitleString))
+            {
+                jobs = jobs.Where(j => j.JobTitle.Contains(jobTitleString));
+            }
+
+            // company search form field
+            if (!String.IsNullOrEmpty(companyString))
+            {
+                jobs = jobs.Where(j => j.CompanyCompanyName.Contains(companyString));
+            }
+
+            // grab a count of the number of jobs currently inside the jobs variable.
+            int count = jobs.Count();
+            // store it in viewbag for the View to display
+            ViewBag.Counts = count;
+
+            // Set JobID for indication whether Index action was called from Save action
+            ViewBag.JobID = JobID;
+
+            // Need for company count
+            if (!String.IsNullOrEmpty(companyString))
+            {
+                companies = companies.Where(c => c.CompanyName.Contains(companyString));
+            }
+            // Grab a count of the number of companies inside the companies variable
+            int companyCount = companies.Count();
+            // store it in viewbag for the View to display
+            ViewBag.companyCount = companyCount;
+
+            //instantiate the view model and serve it to the view
+                       
+            var jobLocationVM = new JobLocationViewModel();
+            jobLocationVM.jobs = await jobs.ToListAsync();
+
+            return View(jobLocationVM);
+            
+        }
+		
+		
+/Home/Admin.cshtml:
+		
+		- fixed global variables
+		
+	@* Global variables *@ 
+    int jobCount = ViewBag.Counts; @*Returns count of currently listed jobs, see HomeController.cs(Admin Section)*@
+    int jobsPerPage = 20; @* This var should always equal the JS var with the same name *@
+    int maxPagesDisplayed = 5; @* This var should always equal the JS var with the same name *@
+    int companyCount = ViewBag.companyCount; @*Returns count of currently listed companies, see HomeController.cs(Admin Section)*@
+
+/Home/Index.cshtml:
+
+@model JobBoardMVC.Models.JobLocationViewModel
+
+@{
+
+    ViewBag.Title = "Home";
+    Layout = "../Shared/_Layout.cshtml";
+
+    @* Global variables *@
+    int jobCount = ViewBag.Counts; @*Returns count of currently listed jobs, see HomeController.cs* (non-authenticated section)*@
+    int companyCount = ViewBag.companyCount; @*Returns count of currently listed companies, see HomeController.cs(non-authenticated section)*@
+
+ }
+
+    <!-- If/Else to determine to show /Home/Index (Landing for unauthenticated users) or /Jobs/Index (for authenticated users)-->
+
+    @if (Request.IsAuthenticated)
+    {
+        //This is broken due to HTML antiforgery token issues
+        //Response.Redirect("/Jobs/Index");
+    }
+
+    else
+    {
+        
+        <div align="Center" class="container-fluid">
+
+            <p>
+                <h2>Welcome to JobPDX</h2>
+            </p>
+
+            <p>
+                <h3>There are @jobCount jobs available and @companyCount companies hiring.</h3>
+            </p>
+
+            <p>
+                <br><h3><a href="/Account/Register" id="registerLink">Sign Up</a> and find yours now!</h3><br />
+            </p>
+
+
+        </div>
+    }
+	
+	
+		
+/Jobs/Index.cshtml:
+
+Wrote code to redirect back to landing page if user logs out.
+		
+	<!-- If user is logged-in, then Search Bar is dispalyed, else redirected to /Home/Index-->
+
+@if (Request.IsAuthenticated)
+{
+
+<div id="search-wrapper" style="width:400px; margin-right:auto; margin-left:auto; text-align: center;">
+    <input id="TitleSearch" type="text" name="jobTitleString" class="form-control" 
+           placeholder="Search @jobCount jobs at @companyCount companies..." /> @* Displays actual number of jobs and companies within text*@
+</div>
+
+}
+
+else
+
+{
+    Response.Redirect("/Home/Index");
+}	
+		
+		
+		
+		
+		
+		

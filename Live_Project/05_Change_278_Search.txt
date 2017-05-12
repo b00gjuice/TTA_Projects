@@ -1,0 +1,46 @@
+JobBoardMVC TTA Live Project
+Student: Freeman Cooley
+
+Changeset 278
+User Story 180
+Create a landing page for the main page that requires registering or signing in to view / save jobs. 
+
+Jesse wanted me to make sure the search bar could not be accessed by unauthenticated users. Also to prevent
+other websites from scraping our data.
+
+/Jobs/Index.cshtml:
+
+<!-- Search Bar does not display unless user is authenticated  (logged-in)-->
+@if (Request.IsAuthenticated)
+{
+
+<div id="search-wrapper" style="width:400px; margin-right:auto; margin-left:auto; text-align: center;">
+    <input id="TitleSearch" type="text" name="jobTitleString" class="form-control" 
+           placeholder="Search @jobCount jobs at @companyCount companies..." /> @* Displays actual number of jobs and companies within text*@
+</div>
+
+}
+
+else
+{
+
+    <!-- Landing Page: If user is unauthenticated a message is displayed encouraging to create account-->
+    <div align="Center" class="container-fluid">
+
+        <p>
+            <h2>Welcome to JobPDX</h2>
+        </p>
+
+        <p>
+            <h3>There are @jobCount jobs available and @companyCount companies hiring.</h3>
+        </p>
+
+        <p>
+            <br><h3><a href="/Account/Register" id="registerLink">Sign Up</a> and find yours now!</h3><br />
+        </p>
+
+
+    </div>
+
+
+}

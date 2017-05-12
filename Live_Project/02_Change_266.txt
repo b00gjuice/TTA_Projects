@@ -1,0 +1,13 @@
+Changeset 266
+User Story 178
+
+
+Change "Register" to "Create your Account!" on the top bar (not signed in)
+
+Register.cshtml:
+
+<input type="submit" class="btn btn-default" value="Create Account" />
+
+_LoginPartial.cshtml:
+
+<li>@Html.ActionLink("Create your Account!", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>

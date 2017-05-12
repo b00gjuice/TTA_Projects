@@ -1,0 +1,112 @@
+Changeset 272
+User Story 179
+
+Add informative text above Search bar on Home page
+This is a info sentence that says "____ Jobs at ____ Companies". The underscored areas are queries of the database. 
+
+Freeman Cooleycommented 4 days ago
+Associated with changeset 278: Created a landing page for the main page that requires registering or signing in to view/save jobs.
+
+Freeman Cooleycommented a week ago
+So the answer is yes then.
+
+
+Freeman Cooleycommented a week ago
+Are you saying you the informative text to read: "X number of jobs at X number of companies? With the numbers being calculated from the database entries?
+
+
+
+This was my first "big" job. I had to do a lot of research and studying the code.
+
+
+
+HomeController.cs:
+
+- I added code to count the number of companies from the database
+
+ // adding a var for counting number of companies used below in company count
+            var companies = from c in context.Companies
+                            select c;
+							
+							
+							
+
+// Need for company count
+if (!String.IsNullOrEmpty(companyString))
+{
+    companies = companies.Where(c => c.CompanyName.Contains(companyString));
+}
+// Grab a count of the number of companies inside the companies variable
+int companyCount = companies.Count();
+// store it in viewbag for the View to display
+ViewBag.companyCount = companyCount;							
+
+
+JobsController.cs:
+
+// adding a var for counting number of companies used below in company count
+var companies = from c in context.Companies
+           select c;
+		   
+		   
+	
+// Need for company count
+if (!String.IsNullOrEmpty(companyString))
+{
+    companies = companies.Where(c => c.CompanyName.Contains(companyString));
+}
+// Grab a count of the number of companies inside the companies variable
+int companyCount = companies.Count();
+// store it in viewbag for the View to display
+ViewBag.companyCount = companyCount;	   
+
+
+/Home/Admin.cshtml:
+
+-I added features to this section of code to support above changes in controllers:
+
+int jobCount = ViewBag.Counts; @*Returns count of currently listed jobs, see HomeController.cs*@
+int jobsPerPage = 20; @* This var should always equal the JS var with the same name *@
+int maxPagesDisplayed = 5; @* This var should always equal the JS var with the same name *@
+int companyCount = ViewBag.CompanyCount; @*Returns count of currently listed companies, see HomeController.cs*@
+}
+<h1>Admin Dashboard</h1>
+@* *@
+
+
+<div id="search-wrapper" style="width:400px; margin-right:auto; margin-left:auto; text-align: center;">
+    <input id="TitleSearch" type="text" name="jobTitleString" class="form-control" 
+           placeholder="Search @jobCount jobs at @companyCount companies..." /> @* Displays actual number of jobs and companies within text*@
+
+
+
+
+/Jobs/Index.cshtml:
+
+
+int jobCount = ViewBag.Counts; @*Returns count of currently listed jobs, see JobsController.cs*@
+int jobID = ViewBag.JobID;
+int maxPagesDisplayed = 5; @* This var should always equal the JS var with the same name *@
+int jobsPerPage = 10;
+int companyCount = ViewBag.CompanyCount; @*Returns count of currently listed companies, see JobsController.cs*@
+
+- I made the search bar show a live count of jobs and companies:
+
+<div id="search-wrapper" style="width:400px; margin-right:auto; margin-left:auto; text-align: center;">
+    <input id="TitleSearch" type="text" name="jobTitleString" class="form-control" 
+           placeholder="Search @jobCount jobs at @companyCount companies..." /> @* Displays actual number of jobs and companies within text*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
