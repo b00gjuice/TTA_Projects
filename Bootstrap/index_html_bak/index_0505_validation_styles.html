@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Bootstrap 3 Essential Training Module: 0505 validating styles-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Bootstrap</title>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <section class="col-xs-12">
+
+<form>
+
+<!-- adding "has-warning" gives a yellow border, "has-error" gives read
+border, "has success" is green -->
+  <!-- <div class="form-group has-warning"> -->
+  <!-- <div class="form-group has-error"> -->
+  <div class="form-group has-success has-feedback">
+
+<!-- "aria" stuff for screen readers -->
+    <label class="control-label"for="inputName">Name</label>
+    <input class="form-control" type="text"
+      id="inputName" placeholder="Name"
+      aria-describedby="nameStatus">
+
+       <!-- so I'm going to put this icon right after this input field, and we're
+       going to say span with a class of glyphicon, and then after this, we
+       need to specify the icon that we want to use, so we would say something
+       like glyphicon-ok, and we would also put in a class of
+       form-control-feedback, and what that will do is add this little check
+       box right here.The icons that Bootstrap uses are part of the GLYPHICONS
+       library which you can find at this URL. And a particular set that it
+       uses are called HALFLINGS -->
+
+      <span class="glyphicon glyphicon-ok form-control-feedback"
+      aria-hidden="true"></span>
+
+      <!-- screen reader -->
+        <span id="nameStatus" class="sr-only">(success)</span>
+  </div>
+
+</form>
+
+    </section>
+  </div><!-- row -->
+</div><!-- content container -->
+
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

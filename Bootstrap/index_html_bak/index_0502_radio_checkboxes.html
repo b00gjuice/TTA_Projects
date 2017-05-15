@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<!-- Bootstrap 3 Essential Training Module: 0502 -->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Bootstrap</title>
+</head>
+<body>
+
+  <!-- to organize normal input fields into groups for proper spacing, you put them inside a div -->
+
+<div class="container">
+  <div class="row">
+    <section class="col-xs-12">
+
+<form>
+  <div class="form-group">
+    <label for="inputName">Name</label>
+    <input class="form-control" type="text"
+      id="inputName" placeholder="Your Name">
+  </div>
+
+  <!-- There isn't a lot of difference between radio controls and checkboxes
+  other than the main somatic reason for them, which is that you use checkboxes
+  when you want the user to be able to choose one or more options. So in here,
+  I want the user to be able to pick One and/or Two. -->
+
+<!-- To make radio choices "in line" you can't have them in div statements
+buth the from group can be in a div-->
+
+  <!-- <div class="radio"> -->
+  <div class="form-group">
+
+
+    <label class="radio-inline">
+
+      <!-- <input name="options" type="radio" disabled> -->
+
+            <input name="options" type="radio" >
+      One
+    </label>
+  <!-- </div> -->
+
+  <!-- <div class="radio"> -->
+    <label class="radio-inline">
+      <input name="options" type="radio">
+      Two
+    </label>
+  </div>
+
+  <!-- </div> -->
+  <input class="btn btn-default"
+    type="submit" value="submit">
+</form>
+
+
+    </section>
+  </div><!-- row -->
+</div><!-- content container -->
+
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+/* ref 01 Image styling linking with index.html header */
+.bgimage {
+	background-image: url('../images/sunflower.jpg');
+	background-position: center center;
+	background-size: cover;
+	height: 200px;
+	color: white;
+}
